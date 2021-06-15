@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface PagCashierTests : XCTestCase
+@interface pag_cashierTests : XCTestCase
 
 @end
 
-@implementation PagCashierTests
+@implementation pag_cashierTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

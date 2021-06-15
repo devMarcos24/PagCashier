@@ -1,4 +1,4 @@
-package com.pagcashier;
+package com.pag_cashier;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "PagCashier";
+    return "pag_cashier";
   }
 }
