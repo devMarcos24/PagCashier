@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "PagCashier.app"
-               BlueprintName = "PagCashier"
-               ReferencedContainer = "container:PagCashier.xcodeproj">
+               BuildableName = "pag_cashier.app"
+               BlueprintName = "pag_cashier"
+               ReferencedContainer = "container:pag_cashier.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "PagCashierTests.xctest"
-               BlueprintName = "PagCashierTests"
-               ReferencedContainer = "container:PagCashier.xcodeproj">
+               BuildableName = "pag_cashierTests.xctest"
+               BlueprintName = "pag_cashierTests"
+               ReferencedContainer = "container:pag_cashier.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PagCashier.app"
-            BlueprintName = "PagCashier"
-            ReferencedContainer = "container:PagCashier.xcodeproj">
+            BuildableName = "pag_cashier.app"
+            BlueprintName = "pag_cashier"
+            ReferencedContainer = "container:pag_cashier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PagCashier.app"
-            BlueprintName = "PagCashier"
-            ReferencedContainer = "container:PagCashier.xcodeproj">
+            BuildableName = "pag_cashier.app"
+            BlueprintName = "pag_cashier"
+            ReferencedContainer = "container:pag_cashier.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
