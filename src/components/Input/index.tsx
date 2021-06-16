@@ -33,6 +33,10 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
   }))
 
   useEffect(() => {
+    setIsFilled(!!inputValueRef.current.value)
+  },[isFilled, inputValueRef.current.value])
+
+  useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputValueRef.current,
@@ -49,7 +53,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
   }, [fieldName, registerField])
   return (
     <Container isFocus={isFocused}>
-      {!!icon && <Icon isFocus={isFocused} name={icon} size={20} />}
+      {!!icon && <Icon isFilled={isFilled} isFocus={isFocused} name={icon} size={20} />}
       <InputText
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "719680255392",
+    "project_id": "paycashier-d2fc2",
+    "storage_bucket": "paycashier-d2fc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719680255392:android:f4fb039ec371551dd760c5",
+        "android_client_info": {
+          "package_name": "com.pag_cashier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719680255392-a6uipk0il69hjg120o3r3ve0ep5vmtc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE6kpkkMcfcup5C7IzVdj6x-RFC2TWPYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719680255392-a6uipk0il69hjg120o3r3ve0ep5vmtc6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "719680255392-1cucjt50dnso743413nuabv7gofh831b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.firebase.paycashier"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

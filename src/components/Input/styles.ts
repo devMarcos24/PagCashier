@@ -3,6 +3,7 @@ import IconProp from 'react-native-vector-icons/Entypo'
 
 interface IProps {
   isFocus: boolean;
+  isFilled?: boolean;
 }
 
 export const Container = styled.View`
@@ -23,7 +24,7 @@ export const Icon = styled(IconProp)`
   font-size: 23px;
   color: #312e38;
 
-  color: ${(props: IProps) => props.isFocus ? '#ff900099' : '#312e38' };
+  color: ${(props: IProps) => props.isFocus || props.isFilled ? '#ff900099' : '#312e38' };
 `
 
 export const InputText = styled.TextInput`
