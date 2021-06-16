@@ -1,6 +1,5 @@
 import firestore from '@react-native-firebase/firestore'
-// import bcrypt from 'bcryptjs'
-const cashierDb = firestore().collection('cashier')
+// const cashierDb = firestore().collection('cashier')
 const userDb = firestore().collection('user')
 
 export const create = () =>{
@@ -15,7 +14,11 @@ export const cadastreUser = async (data: any, userId: string) =>{
       throw new Error('user already cadastred')
     }
 
-    const userCreated = await userDb.doc(userId).set(data)
+    delete data.password
+
+    const id = new Date().getMilliseconds().toString() + new Date().getDay.toString()
+    
+    const userCreated = await userDb.doc().set(data)
   
     return 'created'
   } catch (err) {
