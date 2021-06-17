@@ -10,3 +10,22 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
 `
+
+export const ContainerLogin = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+`
+
+export const ForgotButton = styled.TouchableOpacity`
+  margin-top: 20px;
+  
+`
+
+export const ForgotButtonText = styled.Text`
+  color: #FFF;
+  font-size: 20px;
+  font-family: 'Roboto-Medium';
+`
