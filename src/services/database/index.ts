@@ -1,10 +1,12 @@
 import firestore from '@react-native-firebase/firestore'
 // const cashierDb = firestore().collection('cashier')
-const userDb = firestore().collection('user')
 
-export const create = () =>{
-  return 'created'
+interface user {
+  name: string;
+  email: string;
+  password: string
 }
+const userDb = firestore().collection('user')
 
 export const cadastreUser = async (data: any, userId: string) =>{
   try {
@@ -15,8 +17,6 @@ export const cadastreUser = async (data: any, userId: string) =>{
     }
 
     delete data.password
-
-    const id = new Date().getMilliseconds().toString() + new Date().getDay.toString()
     
     const userCreated = await userDb.doc().set(data)
   
@@ -24,4 +24,8 @@ export const cadastreUser = async (data: any, userId: string) =>{
   } catch (err) {
     throw new Error(err.message)
   }
+}
+
+const getUserByEmail = async (email: string) => {
+  const user = await userDb.where('email', '==', email).get()
 }

@@ -3,15 +3,19 @@ import React, { useRef } from "react"
 import {Form} from '@unform/mobile'
 import {FormHandles} from '@unform/core'
 import {TextInput} from 'react-native'
-import {SafeAreaView, Container } from './styles'
+import {useNavigation} from '@react-navigation/native'
+import {SafeAreaView, Container, ContainerLogin, ForgotButtonText, ForgotButton} from './styles'
 import Input from '../../../components/Input'
+import ButtonGoogle from './Buttons/ButtonGoogle'
 import ButtonComponent from '../../../components/Button'
 import {cadastreUser} from '../../../services'
+import CreateButton from './Buttons/CreateButton'
 
-const App = () => {
+const Login = () => {
   const formRef = useRef<FormHandles>(null)
   const loginInputRef = useRef<TextInput>(null)
   const passwordRef = useRef<TextInput>(null)
+  const navigation = useNavigation()
 
   const handleLogin = async (data: any) => {
     try {
@@ -31,9 +35,17 @@ const App = () => {
           <Input secureTextEntry ref={passwordRef} placeholder="Senha" name="password" icon="lock"/>
           <ButtonComponent onPress={() => formRef.current?.submitForm()}>Entrar</ButtonComponent>
           </Form>
+
+          <ContainerLogin>
+            <ButtonGoogle>Login</ButtonGoogle>
+            <CreateButton onPress={() => navigation.navigate('SignIn')}>Criar Usuario</CreateButton>
+          </ContainerLogin>
+          <ForgotButton>
+            <ForgotButtonText onPress={() => navigation.navigate('ForgotPassword')}>Esqueci minha senha</ForgotButtonText>
+          </ForgotButton>
         </Container>
       </SafeAreaView>
   )
 }
 
-export default App
+export default Login
