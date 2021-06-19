@@ -4,7 +4,7 @@ import IconVector from 'react-native-vector-icons/Ionicons'
 
 export const  Container = styled(RectButton)`
   display: flex;
-  width: 49%;
+  width: 48.5%;
   height: 60px;
   background: #B8B7C2;
 

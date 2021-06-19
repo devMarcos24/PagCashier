@@ -1,19 +1,23 @@
+import { firebase } from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
+
 // const cashierDb = firestore().collection('cashier')
 
-interface user {
+interface ICadastreUser {
   name: string;
   email: string;
-  password: string
+  password: string | undefined;
+  
 }
+
 const userDb = firestore().collection('user')
 
-export const cadastreUser = async (data: any, userId: string) =>{
+export const cadastreUser = async (data: ICadastreUser) =>{
   try {
     const user = await userDb.where('email', '==', data.email).get()
     
     if(!user.empty) {
-      throw new Error('user already cadastred')
+      throw new Error('Usuario já cadastrado')
     }
 
     delete data.password
@@ -24,8 +28,4 @@ export const cadastreUser = async (data: any, userId: string) =>{
   } catch (err) {
     throw new Error(err.message)
   }
-}
-
-const getUserByEmail = async (email: string) => {
-  const user = await userDb.where('email', '==', email).get()
 }
