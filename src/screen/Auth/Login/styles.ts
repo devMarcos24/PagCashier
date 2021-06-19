@@ -1,7 +1,9 @@
 import styled from 'styled-components/native'
+import IconVector from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
+  width: 100%;
 `
 
 export const Container = styled.View`
@@ -15,10 +17,7 @@ export const ContainerLogin = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
 `
-
 export const ForgotButton = styled.TouchableOpacity`
   margin-top: 20px;
   

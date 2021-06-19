@@ -1,10 +1,23 @@
 import React from "react"
+import {useAuth} from '../hooks/auth'
 import Auth from "./Auth.router"
 import App from "./App.router"
+import {Container, Loading} from './styles'
+import Logo from "../components/Logo"
 
 
 const Router = () => {
-  const user = false;
+  const {user, isLoading} = useAuth()
+  console.log(isLoading)
+  if(isLoading) {
+    return (
+      <Container>
+        <Logo/>
+        <Loading size="large" color="#FFF" />
+      </Container>
+    )
+  }
+  
   return user ? <App/> : <Auth/> 
 }
 
