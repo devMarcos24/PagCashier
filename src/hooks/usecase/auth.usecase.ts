@@ -10,7 +10,7 @@ export interface AuthState {
 export interface SignInCredentials {
   name?: string;
   email: string;
-  password: string;
+  password: string | undefined;
   loginWithId?: boolean;
 }
 
@@ -18,7 +18,8 @@ export interface AuthContextData {
   user: any;
   token: string;
   isLoading: boolean;
-  signIn(credentials: SignInCredentials): Promise<any>;
+  signIn(credentials: SignInCredentials): Promise<void>;
+  SignUp(credentials: SignInCredentials): Promise<string>
   signOut(): Promise<void>;
   forgotPassword(email: string): Promise<void>;
 }

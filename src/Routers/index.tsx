@@ -8,7 +8,6 @@ import Logo from "../components/Logo"
 
 const Router = () => {
   const {user, isLoading} = useAuth()
-  console.log(isLoading)
   if(isLoading) {
     return (
       <Container>

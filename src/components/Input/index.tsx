@@ -1,6 +1,6 @@
 import React, { useEffect, useImperativeHandle, useRef, useState, forwardRef } from 'react'
 import { useField } from '@unform/core'
-import { Container, Icon, InputText } from './styles'
+import { Container, ContainerError, Icon, InputText, TextError } from './styles'
 import { TextInputProps } from 'react-native'
 
 interface InputProps extends TextInputProps {
@@ -34,7 +34,7 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
 
   useEffect(() => {
     setIsFilled(!!inputValueRef.current.value)
-  },[isFilled, inputValueRef.current.value])
+  }, [isFilled, inputValueRef.current.value])
 
   useEffect(() => {
     registerField({
@@ -51,20 +51,29 @@ const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = ({ name, ico
       }
     })
   }, [fieldName, registerField])
+  const validEmailError = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i
+  const errorValid: boolean = !inputValueRef.current.value && !!error || error === 'O email precisa ser valido'
   return (
-    <Container isFocus={isFocused}>
-      {!!icon && <Icon isFilled={isFilled} isFocus={isFocused} name={icon} size={20} />}
-      <InputText
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        ref={inputElementRef}
-        defaultValue={defaultValue}
-        onChangeText={(value) => inputValueRef.current.value =value}
-        keyboardAppearance="dark"
-        placeholderTextColor="#66636088"
-        {...rest}
-      />
-    </Container>
+    <>
+      <Container isErrored={errorValid} isFocus={isFocused}>
+        {!!icon && <Icon isErrored={errorValid} isFilled={isFilled} isFocus={isFocused} name={icon} size={20} />}
+        <InputText
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          ref={inputElementRef}
+          defaultValue={defaultValue}
+          onChangeText={(value) => inputValueRef.current.value = value}
+          keyboardAppearance="dark"
+          placeholderTextColor="#66636088"
+          {...rest}
+        />
+      </Container>
+      <ContainerError>
+        {errorValid && !validEmailError.test(inputValueRef.current.value) ? (
+          <TextError>{error}</TextError>
+        ) : null}
+      </ContainerError>
+    </>
   )
 }
 

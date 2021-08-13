@@ -1,31 +1,35 @@
-import { firebase } from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
-
-// const cashierDb = firestore().collection('cashier')
+import { NavigationContainerProps } from '@react-navigation/native'
+import { useAuth } from '../../hooks/auth'
 
 interface ICadastreUser {
+  uid?: string;
   name: string;
   email: string;
   password: string | undefined;
-  
+  confirmPassword: string | undefined;
 }
 
 const userDb = firestore().collection('user')
 
-export const cadastreUser = async (data: ICadastreUser) =>{
+export const cadastreUser = async (data: ICadastreUser, hooks: any) => {
   try {
-    const user = await userDb.where('email', '==', data.email).get()
-    
-    if(!user.empty) {
-      throw new Error('Usuario já cadastrado')
-    }
+
+    const uid = await hooks.SignUp({ email: data.email, password: data.password })
+    data.uid = uid;
 
     delete data.password
-    
-    const userCreated = await userDb.doc().set(data)
-  
+    delete data.confirmPassword
+    await userDb.doc().set(data)
+    // await userDb.doc(uid).set(data)
+    hooks.navigation.goBack()
     return 'created'
   } catch (err) {
-    throw new Error(err.message)
+    if(err.message.includes('email-already-in-use')){
+      hooks.navigation.navigate('ForgotPassword')
+      throw new Error('Email já cadastrado, por favor solicite a recuperação de senha')
+    }
+
+    throw new Error('Falha ao fazer seu cadastro tente novamente ou entre em contato com o suporte')
   }
 }

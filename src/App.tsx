@@ -3,6 +3,7 @@ import React from "react"
 import Routers from "./Routers"
 import {StatusBar} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
+
 import AppProvider from './hooks'
 
 const App = () => {
