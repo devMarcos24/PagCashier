@@ -23,6 +23,7 @@ const ForgotPassword = () => {
       const { email } = data
       await forgotPassword(email)
       Alert.alert('Email enviado', 'Verifique seu email e altere sua senha atraves do link')
+      navigation.goBack()
     } catch (error) {
       Alert.alert('Error ao recuperar senha', 'Não foi possivel recuperar a senha')
       console.log(error)

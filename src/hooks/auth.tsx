@@ -27,10 +27,15 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   const signIn = useCallback(async ({ email, password }: SignInCredentials): Promise<any> => {
     const user = await auth.signInWithEmailAndPassword(email, password)
-    console.log(user)
     await AsyncStorage.setItem('@PagCashier:user', JSON.stringify(user))
     setData({ ...data, user })
   }, [data])
+
+  const SignUp = useCallback(async({ email, password }: SignInCredentials) => {
+    const { user } = await auth.createUserWithEmailAndPassword(email, password)
+
+    return user.uid
+  }, [])
 
   const signOut = useCallback(async (): Promise<void> => {
     await AsyncStorage.removeItem('@PagCashier:user')
@@ -43,7 +48,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ signIn, signOut, user: data.user, token: data.token, isLoading, forgotPassword }}>
+    <AuthContext.Provider value={{ signIn, SignUp, signOut, user: data.user, token: data.token, isLoading, forgotPassword }}>
       {children}
     </AuthContext.Provider>
   )

@@ -1,5 +1,4 @@
 import styled from 'styled-components/native'
-import IconVector from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
