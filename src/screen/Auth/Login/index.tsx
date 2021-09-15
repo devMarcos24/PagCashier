@@ -4,6 +4,7 @@ import { Form } from '@unform/mobile'
 import { FormHandles } from '@unform/core'
 import { TextInput } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import * as yup from 'yup'
 import { SafeAreaView, Container, ContainerLogin, ForgotButtonText, ForgotButton } from './styles'
 import Input from '../../../components/Input'
 import ButtonGoogle from './Buttons/ButtonGoogle'
@@ -23,11 +24,19 @@ const Login = () => {
 
   const handleLogin = async (data: SignInCredentials) => {
     try {
+      const schema = yup.object({
+        email: yup.string().email("O email precisa ser valido").required("O email é obrigatório"),
+        password: yup.string().required("Senha é obrigatório")
+      })
+
+      await schema.validate(data, {
+        abortEarly: false
+      })
+
       await signIn(data)
 
     } catch (error) {
-      Alert.alert('Falhar ao fazer login', 'cheque suas credenciais e tente novamente')
-      console.log(error)
+      Alert.alert('Falhar ao fazer login', 'cheque suas credenciais e tente novamente')           
     }
   }
 

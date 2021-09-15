@@ -16,7 +16,7 @@ const Menu = () => {
         <SafeAreaView>
         <HeadContainerTitle>Menu Principal</HeadContainerTitle>
           <HeadContainerPicture onPress={() => navigation.goBack()}>
-            <Image style={{maxWidth: 55, maxHeight: 55, borderRadius: 25.5}} source={ImageDefault}/>
+            <Image style={{maxWidth: 55, maxHeight: 55, borderRadius: 27.5}} source={ImageDefault}/>
           </HeadContainerPicture>
         </SafeAreaView>
         </HeadContainer>

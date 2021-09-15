@@ -1,9 +1,12 @@
 import React, { useContext, createContext, useState, useEffect, useCallback } from 'react'
-import firebase from '@react-native-firebase/auth'
+import firebaseAuth from '@react-native-firebase/auth'
+import {firebase} from '@react-native-firebase/firestore'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { AuthContextData, AuthState, SignInCredentials } from './usecase/auth.usecase'
 
-const auth = firebase()
+const auth = firebaseAuth()
+const firestore = firebase.firestore()
+const userDb = firestore.collection('user')
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
@@ -26,7 +29,9 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [])
 
   const signIn = useCallback(async ({ email, password }: SignInCredentials): Promise<any> => {
-    const user = await auth.signInWithEmailAndPassword(email, password)
+    const { user } = await auth.signInWithEmailAndPassword(email, password)
+
+    // const userData = await userDb.doc(user.uid).get()
     await AsyncStorage.setItem('@PagCashier:user', JSON.stringify(user))
     setData({ ...data, user })
   }, [data])
