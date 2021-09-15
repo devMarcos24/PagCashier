@@ -10,7 +10,7 @@ export interface AuthState {
 export interface SignInCredentials {
   name?: string;
   email: string;
-  password: string | undefined;
+  password: string;
   loginWithId?: boolean;
 }
 
